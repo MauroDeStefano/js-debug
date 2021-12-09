@@ -56,7 +56,7 @@ const cars = [
         manufacturer: 'Seat',
         model: 'Ibiza',
         type: 'metano'
-    }
+    },
     {
         manufacturer: 'Audi',
         model: 'R8',
@@ -64,14 +64,14 @@ const cars = [
     },
 ];
 
-const gasolineCars = cars.filter( (auto) >= auto.type === 'benzina');
+const gasolineCars = cars.filter( (auto) => auto.type.toLowerCase() === 'benzina');
 
 const dieselCars = cars.filter( (auto) => {
-    auto.type === 'diesel';
+    return auto.type.toLowerCase() === 'diesel';
 });
 
 const otherCars = cars.filter( (auto) => {
-    return auto.type !== 'benzina' || auto.type !== 'diesel';
+    return auto.type.toLowerCase() !== 'benzina' && auto.type.toLowerCase() !== 'diesel';
 });
 
 console.log('Auto a benzina');
@@ -84,3 +84,25 @@ console.log(dieselCars);
 
 console.log('Tutte le altre auto');
 console.log(otherCars);
+
+/*******************************************************************************
+​
+    Risposta domande:
+    1- Che cosa fa questo codice?
+        
+        Divide per tipo di alimentazione l'array cars
+
+    2- Sono presenti errori di sintassi?
+    
+    si, 
+        1- manca una virgola a riga 59,
+        2- a riga 67 era sbagliato il simbolo dell'arrow function, era >= invece di =>
+        3- Aggiunti quattro toLowerCase() per controllare che prenda tutto
+        4- Mancava il return a riga 70
+
+    3- Sono presenti errori logici?
+
+        si cambiato il || per un && a riga 74
+​
+​
+*******************************************************************************/
