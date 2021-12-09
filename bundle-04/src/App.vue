@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <Header :genres="genresList" :authors="authorsList" @changedGenre="startGenreSearch" @chaangedAuthor="startAuthorSearch" />
+        <Header :genres="genresList" :authors="authorsList" @changedGenre="startGenreSearch" @changedAuthor="startAuthorSearch" />
 
         <Main :selectedGenre="genreToSearch" :selectedAuthor="authorToSearch" @genresAndAuthorsReady="getGenresAndAuthorsList" />
     </div>
@@ -24,15 +24,27 @@ export default {
             authorToSearch: "",
         };
     },
+
     methods: {
         getGenresAndAuthorsList(allGenresAndAuthors) {
-            allGenresAndAuthors = {};
-            this.genresList = allGenresAndAuthors.genres;
+            let prova = allGenresAndAuthors.genres;
+            for(let i= 0; i < prova.length; i++){
+                if( this.genresList === []){
+                    this.genresList.push(prova[i].genres);
+                }
+                if (!this.genresList.includes(prova[i].genres)){
+                    this.genresList.push(prova[i].genres);
+                }
+            }
+
+            this.genresList = prova;
+
+            // this.genresList = allGenresAndAuthors.genres;
+            
             this.authorsList = allGenresAndAuthors.authors;
         },
         startGenreSearch(genreToSearch) {
             console.log(genreToSearch);
-            genreToSearch = "";
             this.genreToSearch = genreToSearch;
         },
         startAuthorSearch(authorToSearch) {
@@ -40,6 +52,7 @@ export default {
             this.authorToSearch = authorToSearch;
         }
     },
+    
 };
 </script>
 

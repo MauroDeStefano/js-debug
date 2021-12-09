@@ -1,9 +1,11 @@
 <template>
     <div class="disc p-3 text-center">
         <div class="p-3">
-            <img class="img-fluid mb-3" :src="discs.poster" :alt="disc.name" />
+            <img class="img-fluid mb-3" :src="disc.poster" :alt="disc.name" />
+            <!-- disc.poster era scritto discs.poster -->
             <p class="title text-uppercase fw-bold">{{ disc.title }}</p>
-            <p class="author lead mb-0">{ disc.author }</p>
+            <p class="author lead mb-0">{{ disc.author }}</p>
+            <!-- MANCAVA UNA GRAFFA QUI         ♥          -->
             <p class="year">{{ disc.year }}</p>
         </div>
     </div>
@@ -13,7 +15,8 @@
 export default {
     name: "Disc",
     props: {
-        disc: String,
+        disc: Object,
+        // questo era impostato come array
     },
 };
 </script>
