@@ -23,7 +23,9 @@ export default {
 
 <style lang="scss" scoped>
 .disc {
-    flex-basis: calc(100% / 5);
+    flex-basis: calc(100% / 5 - 20px);
+    height: 400px;
+    margin: 10px;
 
     .author,
     .year {

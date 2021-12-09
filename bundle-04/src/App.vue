@@ -27,19 +27,8 @@ export default {
 
     methods: {
         getGenresAndAuthorsList(allGenresAndAuthors) {
-            let prova = allGenresAndAuthors.genres;
-            for(let i= 0; i < prova.length; i++){
-                if( this.genresList === []){
-                    this.genresList.push(prova[i].genres);
-                }
-                if (!this.genresList.includes(prova[i].genres)){
-                    this.genresList.push(prova[i].genres);
-                }
-            }
-
-            this.genresList = prova;
-
-            // this.genresList = allGenresAndAuthors.genres;
+           
+            this.genresList = allGenresAndAuthors.genres;
             
             this.authorsList = allGenresAndAuthors.authors;
         },
